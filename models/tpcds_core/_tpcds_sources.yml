@@ -1,0 +1,11 @@
+sources:
+  - name: tpcds_core
+    database: raw_tpch
+    schema: tpcds_sf10tcl
+    tables:
+      - name: inventory
+      - name: item
+      - name: promotion
+      - name: warehouse
+      - name: web_site
+      - name: web_page
