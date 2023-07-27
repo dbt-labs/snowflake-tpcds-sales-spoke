@@ -8,7 +8,6 @@ sources:
       - name: catalog_returns
       - name: catalog_sales
       - name: inventory
-      - name: inventory
       - name: item
       - name: promotion
       - name: store_sales
