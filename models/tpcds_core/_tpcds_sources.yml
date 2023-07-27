@@ -3,9 +3,19 @@ sources:
     database: raw_tpch
     schema: tpcds_sf10tcl
     tables:
+      - name: catalog
+      - name: catalog_page
+      - name: catalog_returns
+      - name: catalog_sales
+      - name: inventory
       - name: inventory
       - name: item
       - name: promotion
+      - name: store_sales
+      - name: store_returns
+      - name: reason
       - name: warehouse
+      - name: web_sales
+      - name: web_returns
       - name: web_site
       - name: web_page
