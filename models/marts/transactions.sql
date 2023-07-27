@@ -1,6 +1,6 @@
 with 
 
-{# customers as (
+customers as (
 
     select * from {{ ref('snowflake_tpcds_core', 'customers') }}
 
@@ -10,7 +10,7 @@ stores as (
 
     select * from {{ ref('snowflake_tpcds_core', 'stores') }}
 
-), #}
+),
 
 unioned as (
     {{
