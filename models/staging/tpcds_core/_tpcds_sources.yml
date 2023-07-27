@@ -3,7 +3,6 @@ sources:
     database: raw_tpch
     schema: tpcds_sf10tcl
     tables:
-      - name: catalog
       - name: catalog_page
       - name: catalog_returns
       - name: catalog_sales
