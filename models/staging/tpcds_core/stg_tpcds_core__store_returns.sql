@@ -3,24 +3,25 @@ with
 source as (
 
     select * from {{ source('tpcds_core', 'store_returns') }}
+    limit 1000
 
 ),
 
 renamed as (
 
     select
-        'store_return' as return_type,
-        sr_returned_date_sk as return_date_sk,
-        sr_return_time_sk as return_time_sk,
-        sr_item_sk as item_sk,
         {{
             dbt_utils.generate_surrogate_key(
                 [
-                    'return_type',
-                    'return_time_sk'
+                    'sr_item_sk',
+                    'sr_ticket_number'
                 ]
             )
-        }} as store_return_sk,
+        }} as return_id,
+        'store_return' as transaction_type,
+        sr_returned_date_sk as return_date_sk,
+        sr_return_time_sk as return_time_sk,
+        sr_item_sk as item_sk,
         sr_customer_sk as customer_sk,
         sr_cdemo_sk as cdemo_sk,
         sr_hdemo_sk as hdemo_sk,

@@ -3,25 +3,25 @@ with
 source as (
 
     select * from {{ source('tpcds_core', 'web_sales') }}
-    limit 1000000
+    limit 100000
 
 ),
 
 renamed as (
 
     select
-        'web_sale' as sale_type,
-        ws_sold_date_sk as sold_date_sk,
-        ws_sold_time_sk as sold_time_sk,
-        ws_ship_date_sk as ship_date_sk,
         {{
             dbt_utils.generate_surrogate_key(
                 [
-                    'sale_type',
-                    'sold_time_sk'
+                    'ws_item_sk',
+                    'ws_order_number'
                 ]
             )
-        }}
+        }} as sale_id,
+        'web_sale' as transaction_type,
+        ws_sold_date_sk as sold_date_sk,
+        ws_sold_time_sk as sold_time_sk,
+        ws_ship_date_sk as ship_date_sk,
         ws_item_sk as item_sk,
         ws_bill_customer_sk as bill_customer_sk,
         ws_bill_cdemo_sk as bill_cdemo_sk,

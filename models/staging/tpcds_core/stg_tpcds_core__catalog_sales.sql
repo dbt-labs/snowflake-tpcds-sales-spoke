@@ -3,23 +3,24 @@ with
 source as (
 
     select * from {{ source('tpcds_core', 'catalog_sales') }}
+    limit 10000
 
 ),
 
 renamed as (
 
     select
-        'catalog_sale' as sale_type,
-        cs_sold_date_sk as sold_date_sk,
-        cs_sold_time_sk as sold_time_sk,
         {{
             dbt_utils.generate_surrogate_key(
                 [
-                    'sale_type',
-                    'sold_time_sk'
+                    'cs_item_sk',
+                    'cs_order_number'
                 ]
             )
-        }} as catalog_sale_sk,
+        }} as sale_id,
+        'catalog_sale' as transaction_type,
+        cs_sold_date_sk as sold_date_sk,
+        cs_sold_time_sk as sold_time_sk,
         cs_ship_date_sk as ship_date_sk,
         cs_bill_customer_sk as bill_customer_sk,
         cs_bill_cdemo_sk as bill_cdemo_sk,

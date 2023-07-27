@@ -11,7 +11,7 @@ models:
   - name: stg_tpcds_core__catalog_returns
     description: staging model for the catalog_returns table from the core raw schema 
     columns:
-      - name: catalog_returns_sk
+      - name: return_id
         tests:
           - unique
           - not_null
@@ -19,7 +19,7 @@ models:
   - name: stg_tpcds_core__catalog_sales
     description: staging model for the catalog_sales table from the core raw schema 
     columns:
-      - name: catalog_sales_sk
+      - name: sale_id
         tests:
           - unique
           - not_null
@@ -51,7 +51,15 @@ models:
   - name: stg_tpcds_core__store_sales
     description: staging model for the store_sales table from the core raw schema 
     columns:
-      - name: store_sales_sk
+      - name: sale_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_tpcds_core__store_returns
+    description: staging model for the store_returns table from the core raw schema 
+    columns:
+      - name: return_id
         tests:
           - unique
           - not_null
@@ -83,7 +91,7 @@ models:
   - name: stg_tpcds_core__web_sales
     description: staging model for the web_sales table from the core raw schema 
     columns:
-      - name: web_sales_sk
+      - name: sale_id
         tests:
           - unique
           - not_null
@@ -91,7 +99,7 @@ models:
   - name: stg_tpcds_core__web_returns
     description: staging model for the web_returns table from the core raw schema 
     columns:
-      - name: web_returns_sk
+      - name: return_id
         tests:
           - unique
           - not_null

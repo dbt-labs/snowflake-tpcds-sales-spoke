@@ -3,23 +3,24 @@ with
 source as (
 
     select * from {{ source('tpcds_core', 'web_returns') }}
+    limit 1000
 
 ),
 
 renamed as (
 
     select
-        'web_return' as return_type,
-        wr_returned_date_sk as return_date_sk,
-        wr_returned_time_sk as return_time_sk,
         {{
             dbt_utils.generate_surrogate_key(
                 [
-                    'return_type',
-                    'return_time_sk'
+                    'wr_item_sk',
+                    'wr_order_number'
                 ]
             )
-        }} as web_return_sk,
+        }} as return_id,
+        'web_return' as transaction_type,
+        wr_returned_date_sk as return_date_sk,
+        wr_returned_time_sk as return_time_sk,
         wr_item_sk as item_sk,
         wr_refunded_customer_sk as refunded_customer_sk,
         wr_refunded_cdemo_sk as refunded_cdemo_sk,
