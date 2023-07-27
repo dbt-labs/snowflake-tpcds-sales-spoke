@@ -27,24 +27,20 @@ unioned as (
 final as (
 
     select
-        coaleasce(sale_id, return_id) as transaction_id,
-        transaction_type,
-        item_sk,
-        coalesce(
-            customer_sk, -- store
-            returning_customer_sk -- catalog + web
-        ) as customer_sk,
-        call_center_sk
-        store_sk,
-        coalesce(sales_price, -1 * return_amt) as transaction_amount
-        customers.first_name
+        coalesce(sale_id, return_id) as transaction_id,
+        unioned.customer_sk,
+        unioned.transaction_type,
+        unioned.item_sk,
+        unioned.call_center_sk,
+        unioned.store_sk,
+        coalesce(sales_price, -1 * return_amt) as transaction_amount,
+        customers.first_name,
         customers.last_name,
-        customers.is_preferred_customer
-        customers.gender
+        customers.is_preferred_customer,
+        customers.gender,
         stores.store_name,
         stores.city,
         stores.state
-
 
     from unioned
     left join customers
