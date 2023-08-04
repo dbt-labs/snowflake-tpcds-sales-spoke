@@ -24,14 +24,6 @@ models:
           - unique
           - not_null
 
-  - name: stg_tpcds_core__inventory
-    description: staging model for the inventory table from the core raw schema 
-    columns:
-      - name: inventory_sk
-        tests:
-          - unique
-          - not_null
-
   - name: stg_tpcds_core__item
     description: staging model for the item table from the core raw schema 
     columns:

@@ -37,6 +37,8 @@ final as (
         customers.first_name,
         customers.last_name,
         customers.is_preferred_customer,
+        customers.income_band_lower_bound,
+        customers.income_band_upper_bound,
         customers.gender,
         stores.store_name,
         stores.city,

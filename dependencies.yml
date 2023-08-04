@@ -1,2 +1,8 @@
 projects:
   - name: snowflake_tpcds_core
+  
+packages:
+  - package: dbt-labs/dbt_utils
+    version: 1.1.1
+  - git: https://github.com/dbt-labs/snowflake-tpcds-core
+    revision: jerco/demo-add-income-band-customers 
