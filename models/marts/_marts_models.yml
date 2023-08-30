@@ -1,6 +1,7 @@
 models:
   - name: transactions
     description: all the transactions you could dream of, enriched by customer and store data from the core dbt project
+    access: public
     columns:
       - name: transaction_id
         tests: 
