@@ -3,6 +3,7 @@ with
 customers as (
 
     select * from {{ ref('snowflake_tpcds_core', 'customers') }}
+    where 1 = 1
 
 ),
 
@@ -34,6 +35,7 @@ final as (
         unioned.call_center_sk,
         unioned.store_sk,
         coalesce(sales_price, -1 * return_amt) as transaction_amount,
+        customers.salutation,
         customers.first_name,
         customers.last_name,
         customers.is_preferred_customer,
