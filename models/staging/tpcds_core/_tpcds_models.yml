@@ -1,5 +1,5 @@
 groups:
-  - name: stg_models
+  - name: staging_models
     owner:
       email: stg@jaffleshop.com
       slack: stg-data
