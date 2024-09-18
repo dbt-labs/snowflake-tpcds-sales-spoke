@@ -1,6 +1,7 @@
 models:
   - name: int_returns__unioned
-    description: model unioning returns from all verticals
+    description: model unioning returns from all verticals, now in a group
+    group: int_models
     columns:
       - name: return_id
         tests:
@@ -9,6 +10,7 @@ models:
 
   - name: int_sales__unioned
     description: model unioning sales from all verticals
+    group: int_models
     columns:
       - name: sale_id
         tests:
