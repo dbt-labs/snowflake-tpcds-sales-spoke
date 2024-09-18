@@ -1,6 +1,6 @@
 with 
 
-source as (
+source_data as (
 
     select * from {{ source('tpcds_core', 'catalog_page') }}
 
@@ -19,7 +19,7 @@ renamed as (
         cp_description as description,
         cp_type as type
 
-    from source
+    from source_data
 
 )
 
