@@ -1,6 +1,6 @@
 with 
 
-unioned as (
+funioned as (
     {{
         dbt_utils.union_relations(
             [
@@ -26,7 +26,7 @@ final as (
         store_sk,
         return_amt
 
-    from unioned
+    from funioned
 
 )
 
