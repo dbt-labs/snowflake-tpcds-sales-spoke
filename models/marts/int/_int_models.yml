@@ -1,3 +1,10 @@
+groups:
+  - name: int_models
+    owner:
+      email: int@jaffleshop.com
+      slack: int-data
+      github: int-data-team
+
 models:
   - name: int_returns__unioned
     description: model unioning returns from all verticals, now in a group
