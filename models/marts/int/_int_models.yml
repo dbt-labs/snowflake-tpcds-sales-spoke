@@ -7,7 +7,7 @@ groups:
 
 models:
   - name: int_returns__unioned
-    description: model unioning returns from all verticals, now in a group
+    description: model unioning returns from all verticals
     group: int_models
     columns:
       - name: return_id
