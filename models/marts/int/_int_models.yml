@@ -1,6 +1,14 @@
+groups:
+  - name: int_models
+    owner:
+      email: int@jaffleshop.com
+      slack: int-data
+      github: int-data-team
+
 models:
   - name: int_returns__unioned
     description: model unioning returns from all verticals
+    group: int_models
     columns:
       - name: return_id
         tests:
@@ -9,6 +17,7 @@ models:
 
   - name: int_sales__unioned
     description: model unioning sales from all verticals
+    group: int_models
     columns:
       - name: sale_id
         tests:
