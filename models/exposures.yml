@@ -18,6 +18,9 @@ exposures:
   - name: customer360_test.MDFmYThkZmUtNTVhNi00OGZiLWI1Y2UtNzkyZjcxY2ViOTIx
     type: application
     maturity: high
+    owner:
+      name: Dbt Contributor
+      email: contributor@dbt.com
 
   - name: testing_merged_exposures.ZjMxYzg5MGQtYjlhMC00NjQ5LWE0ZjEtNDk1MTNlNDdlZjk2
     label: Testing Merged Exposures (manually defined in yaml file)
