@@ -22,7 +22,8 @@ exposures:
   #     name: Dbt Contributor
   #     email: contributor@dbt.com
 
-  - name: testing_merged_exposures.OThiMjA1YmUtYzYyZC00NmQ2LTk4YzQtYWNmODRmOGQwMDJi
+  - name: testing_merged_exposures
+  # - name: testing_merged_exposures.OThiMjA1YmUtYzYyZC00NmQ2LTk4YzQtYWNmODRmOGQwMDJi  # match with exact id suffix
     label: Testing Merged Exposures (manually defined in yaml file)
     type: application
     maturity: high
