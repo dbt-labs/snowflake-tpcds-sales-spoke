@@ -12,7 +12,7 @@ exposures:
     depends_on:
       - ref('transactions')
     owner:
-      name: Dbt Contributor
+      name: Dbt's Contributor
       email: contributor@dbt.com
   
   - name: customer360_test.MDFmYThkZmUtNTVhNi00OGZiLWI1Y2UtNzkyZjcxY2ViOTIx
