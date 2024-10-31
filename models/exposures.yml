@@ -2,7 +2,7 @@ version: 2
 
 exposures:
 
-  - name: manual_exposure_do_not_merge_with_auto
+  - name: manual_exposure
     label: Manual exposure that should not be merged with auto exposure
     type: notebook
     maturity: low
@@ -15,12 +15,12 @@ exposures:
       name: Dbt's Contributor
       email: contributor@dbt.com
   
-  # - name: customer360_test.MmE1YmUzYjUtNGZjOC00NDc0LWE2ZTktZWIyMDc4YjEyOGJl
-  #   type: application
-  #   maturity: high
-  #   owner:
-  #     name: Dbt Contributor
-  #     email: contributor@dbt.com
+  - name: customer360_test
+    type: application
+    maturity: high
+    owner:
+      name: Dbt Contributor
+      email: contributor@dbt.com
 
   - name: testing_merged_exposures
   # - name: testing_merged_exposures.OThiMjA1YmUtYzYyZC00NmQ2LTk4YzQtYWNmODRmOGQwMDJi  # match with exact id suffix
