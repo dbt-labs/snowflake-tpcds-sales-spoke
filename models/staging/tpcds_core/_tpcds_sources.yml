@@ -6,6 +6,7 @@ sources:
       - name: catalog_page
       - name: catalog_returns
       - name: catalog_sales
+      - name: date_dim
       - name: inventory
       - name: item
       - name: promotion

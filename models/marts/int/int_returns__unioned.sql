@@ -24,7 +24,8 @@ final as (
         ) as customer_sk,
         call_center_sk
         store_sk,
-        return_amt
+        return_amt,
+        return_date_sk
 
     from unioned
 
