@@ -1,0 +1,8 @@
+snapshots:
+  - name: first_auto_exposure_snapshot
+    relation: ref('first_auto_exposure_model')
+    config:
+      schema: snapshots
+      strategy: check
+      unique_key: unique_key
+      check_cols: ['unique_key']

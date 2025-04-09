@@ -1,0 +1,43 @@
+version: 2
+
+exposures:
+
+  - name: manual_exposure
+    label: Manual exposure that should not be merged with auto exposure
+    type: notebook
+    maturity: low
+    url: https://bi.tool/notebook/manual
+    description: >
+      This is a description of a purely manually defined exposure.
+    depends_on:
+      - ref('transactions')
+    owner:
+      name: Dbt's Contributor
+      email: contributor@dbt.com
+  
+  - name: customer360_test
+    type: application
+    maturity: high
+    owner:
+      name: Dbt Contributor
+      email: contributor@dbt.com
+
+  - name: testing_merged_exposures
+  # - name: testing_merged_exposures.OThiMjA1YmUtYzYyZC00NmQ2LTk4YzQtYWNmODRmOGQwMDJi  # match with exact id suffix
+    label: Testing Merged Exposures (manually defined in yaml file)
+    type: application
+    maturity: high
+    url: https://bi.tool/dashboards/1
+    description: >
+      This is a description of merged exposures manually defined in a yaml file.
+    depends_on:
+      - ref('int_sales__unioned')
+      - source('tpcds_core', 'store_sales')
+    owner:
+      name: Dbt Contributor
+      email: contributor@dbt.com
+    tags: ['tableau']
+    meta:
+      type: tableau
+    config:
+      enabled: true
