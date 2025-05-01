@@ -1,0 +1,13 @@
+sources:
+  - name: jaffle_shop
+    database: jaffle_shop_raw
+    schema: ecommerce
+    freshness: 
+      warn_after: {count: 15, period: day}
+      error_after: {count: 60, period: day}  
+    tables:
+      - name: customers
+      - name: orders
+      - name: locations
+      - name: order_items
+      - name: products
