@@ -2,6 +2,9 @@ sources:
   - name: tpcds_core
     database: raw_tpch
     schema: tpcds_sf10tcl
+    freshness: 
+      warn_after: {count: 15, period: day}
+      error_after: {count: 60, period: day}  
     tables:
       - name: catalog_page
       - name: catalog_returns
