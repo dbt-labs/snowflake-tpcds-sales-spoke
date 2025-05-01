@@ -7,3 +7,6 @@ models:
         tests: 
           - unique
           - not_null
+  - name: stg_tpcds_core__date_dim
+    description: changing this to public to verify dbt parse does not work 
+    access: public
