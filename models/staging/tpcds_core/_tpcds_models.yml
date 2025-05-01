@@ -10,6 +10,8 @@ models:
   - name: stg_tpcds_core__catalog_page
     description: staging model for the catalog_page table from the core raw schema 
     group: staging_models
+    config:
+      tags: ['introspective']
     columns:
       - name: catalog_page_sk
         tests:
