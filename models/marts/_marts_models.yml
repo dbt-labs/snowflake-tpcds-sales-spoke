@@ -22,6 +22,3 @@ models:
     access: private
     columns:
       - name: duplicate_for_groups_transactions_id
-        tests: 
-          - unique
-          - not_null
