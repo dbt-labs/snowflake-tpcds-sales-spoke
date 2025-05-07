@@ -1,3 +1,9 @@
+groups:
+  - name: paul_group_access_only
+    owner: 
+      name: Paul Test
+      email: paul.pham@dbtlabs.com
+
 models:
   - name: transactions
     description: all the transactions you could dream of, enriched by customer and store data from the core dbt project
@@ -10,3 +16,12 @@ models:
   - name: stg_tpcds_core__date_dim
     description: changing this to public to verify dbt parse does not work 
     access: public
+  - name: duplicate_for_groups_transactions
+    description: all the transactions you could dream of, enriched by customer and store data from the core dbt project
+    group: paul_group_access_only
+    access: private
+    columns:
+      - name: duplicate_for_groups_transactions_id
+        tests: 
+          - unique
+          - not_null
