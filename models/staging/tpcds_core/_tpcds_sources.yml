@@ -2,15 +2,16 @@ sources:
   - name: tpcds_core
     database: raw_tpch
     schema: tpcds_sf10tcl
-    freshness: 
+    freshness:
       warn_after: {count: 15, period: day}
-      error_after: {count: 60, period: day}  
+      error_after: {count: 60, period: day}
     tables:
       - name: catalog_page
       - name: catalog_returns
       - name: catalog_sales
       - name: date_dim
       - name: inventory
+        freshness: null
       - name: item
       - name: promotion
       - name: store_sales
