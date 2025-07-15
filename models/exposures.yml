@@ -14,7 +14,7 @@ exposures:
     owner:
       name: Dbt's Contributor
       email: contributor@dbt.com
-  
+
   - name: customer360_test
     type: application
     maturity: high
@@ -36,8 +36,8 @@ exposures:
     owner:
       name: Dbt Contributor
       email: contributor@dbt.com
-    tags: ['tableau']
-    meta:
-      type: tableau
     config:
       enabled: true
+      tags: ['tableau']
+      meta:
+        type: tableau
