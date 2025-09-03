@@ -1,4 +1,3 @@
-
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
@@ -33,10 +32,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   snowflake_tpcds_sales_spoke:
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    +meta:
+      example:
+        +materialized: view
 
 # dbt_project_evaluator
 dispatch:
   - macro_namespace: dbt
     search_order: ['dbt_project_evaluator', 'dbt']
+flags:
+  require_generic_test_arguments_property: true
