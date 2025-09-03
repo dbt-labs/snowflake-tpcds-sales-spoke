@@ -41,19 +41,9 @@ models:
       duplicate_for_groups_transactions:
         +enabled: false
 
-  # dbt-fusion compatibility: Configure dbt_project_evaluator models for safe introspection
+  # dbt-fusion compatibility: Temporarily disable dbt_project_evaluator to avoid post_hook serialization issues
   dbt_project_evaluator:
-    +static_analysis: unsafe
-    # Disable post_hooks that cause serialization errors in dbt-fusion
-    staging:
-      graph:
-        stg_sources:
-          +post_hook: []
-        base:
-          base_metric_relationships:
-            +post_hook: []
-          base_exposure_relationships:
-            +post_hook: []
+    +enabled: false
 
 # dbt_project_evaluator
 dispatch:
