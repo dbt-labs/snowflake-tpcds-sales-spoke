@@ -44,6 +44,16 @@ models:
   # dbt-fusion compatibility: Configure dbt_project_evaluator models for safe introspection
   dbt_project_evaluator:
     +static_analysis: unsafe
+    # Disable post_hooks that cause serialization errors in dbt-fusion
+    staging:
+      graph:
+        stg_sources:
+          +post_hook: []
+        base:
+          base_metric_relationships:
+            +post_hook: []
+          base_exposure_relationships:
+            +post_hook: []
 
 # dbt_project_evaluator
 dispatch:
