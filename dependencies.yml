@@ -1,2 +1,3 @@
-projects:
-  - name: snowflake_tpcds_core
+# Cross-project dependencies disabled for dbt-fusion compatibility
+# projects:
+#   - name: snowflake_tpcds_core

@@ -1,12 +1,12 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'snowflake_tpcds_sales_spoke'
-version: '1.0.0'
+name: "snowflake_tpcds_sales_spoke"
+version: "1.0.0"
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'default'
+profile: "default"
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -18,10 +18,9 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
-clean-targets:         # directories to be removed by `dbt clean`
+clean-targets: # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
-
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -35,10 +34,25 @@ models:
     +meta:
       example:
         +materialized: view
+    marts:
+      # Temporarily disable models that reference snowflake_tpcds_core
+      transactions:
+        +enabled: false
+      duplicate_for_groups_transactions:
+        +enabled: false
+
+  # dbt-fusion compatibility: Temporarily disable dbt_project_evaluator to avoid post_hook serialization issues
+  dbt_project_evaluator:
+    +enabled: false
 
 # dbt_project_evaluator
 dispatch:
   - macro_namespace: dbt
-    search_order: ['dbt_project_evaluator', 'dbt']
+    search_order: ["dbt_project_evaluator", "dbt"]
+
+# dbt-fusion compatibility flags
 flags:
   require_generic_test_arguments_property: true
+
+# Disable problematic on-run-end hooks for fusion compatibility
+on-run-end: []

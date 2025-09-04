@@ -1,7 +1,6 @@
 version: 2
 
 exposures:
-
   - name: manual_exposure
     label: Manual exposure that should not be merged with auto exposure
     type: notebook
@@ -14,6 +13,8 @@ exposures:
     owner:
       name: Dbt's Contributor
       email: contributor@dbt.com
+    config:
+      enabled: false # Disabled because transactions model is disabled
 
   - name: customer360_test
     type: application
@@ -23,7 +24,7 @@ exposures:
       email: contributor@dbt.com
 
   - name: testing_merged_exposures
-  # - name: testing_merged_exposures.OThiMjA1YmUtYzYyZC00NmQ2LTk4YzQtYWNmODRmOGQwMDJi  # match with exact id suffix
+    # - name: testing_merged_exposures.OThiMjA1YmUtYzYyZC00NmQ2LTk4YzQtYWNmODRmOGQwMDJi  # match with exact id suffix
     label: Testing Merged Exposures (manually defined in yaml file)
     type: application
     maturity: high
@@ -38,6 +39,6 @@ exposures:
       email: contributor@dbt.com
     config:
       enabled: true
-      tags: ['tableau']
+      tags: ["tableau"]
       meta:
         type: tableau
