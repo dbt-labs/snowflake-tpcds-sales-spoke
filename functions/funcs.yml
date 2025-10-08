@@ -1,0 +1,15 @@
+# functions/funcs.yml
+
+functions:
+  - name: whoami
+    returns:
+      data_type: string
+  - name: area_of_circle
+    description: "Calculate the area of a circle given its radius"
+    returns:
+      data_type: float
+      description: "The area of the circle"
+    arguments:
+      - name: radius
+        data_type: float
+        description: "The radius of the circle"
