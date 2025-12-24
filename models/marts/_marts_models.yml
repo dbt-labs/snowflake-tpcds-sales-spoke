@@ -7,13 +7,91 @@ groups:
 models:
   - name: transactions
     description: all the transactions you could dream of, enriched by customer and store data from the core dbt project
+
+    # Semantic Model Configuration
+    semantic_model:
+      enabled: true
+      name: transactions_semantic_model
+      config:
+        meta:
+          owner: "@sales-analytics"
+
+    agg_time_dimension: transaction_date
+
     columns:
       - name: transaction_id
         tests:
           - unique
           - not_null
+        entity:
+          type: primary
+          name: transaction
+          description: "Unique identifier for each transaction"
+
+      - name: customer_sk
+        entity:
+          type: foreign
+          name: customer
+
+      - name: store_sk
+        entity:
+          type: foreign
+          name: store
+
+      - name: item_sk
+        entity:
+          type: foreign
+          name: item
+
+      - name: transaction_date
+        granularity: day
+        dimension:
+          type: time
+          name: transaction_date
+          label: "Transaction Date"
+          description: "The date of the transaction (sale or return)"
+
+      - name: transaction_type
+        dimension:
+          type: categorical
+          name: transaction_type
+          label: "Transaction Type"
+          description: "Type of transaction: sale or return"
+
+      - name: transaction_amount
+        description: "Amount of the transaction (positive for sales, negative for returns)"
+
+      - name: store_name
+        dimension:
+          type: categorical
+          label: "Store Name"
+
+      - name: city
+        dimension: categorical
+
+      - name: state
+        dimension: categorical
+
+      - name: gender
+        dimension: categorical
+
+      - name: is_preferred_customer
+        dimension:
+          type: categorical
+          label: "Is Preferred Customer"
+
+    # Metric: simple metric for total transaction amount
+    metrics:
+      - name: total_transaction_amount
+        description: "Sum of all transaction amounts (sales minus returns)"
+        label: "Total Transaction Amount"
+        type: simple
+        agg: sum
+        expr: transaction_amount
+
     config:
       access: public
+
   - name: stg_tpcds_core__date_dim
     description: changing this to public to verify dbt parse does not work
     config:
@@ -25,3 +103,16 @@ models:
     config:
       group: paul_group_access_only
       access: private
+
+# Saved Query: uses the total_transaction_amount metric
+saved_queries:
+  - name: daily_sales_by_store
+    label: "Daily Sales by Store"
+    description: "Daily transaction amounts grouped by store location"
+    query_params:
+      metrics:
+        - total_transaction_amount
+      group_by:
+        - "Dimension('transaction__transaction_date')"
+        - "Dimension('transaction__store_name')"
+        - "Dimension('transaction__state')"
