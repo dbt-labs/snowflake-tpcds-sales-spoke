@@ -1,5 +1,3 @@
-{{ config(materialized='table') }}
-
 -- updating the range will increase the number of rows in the table, 
 -- making it possible to check whether the rebuilt table is flowing through to the downstream exposure
 {% for i in range(10) %}

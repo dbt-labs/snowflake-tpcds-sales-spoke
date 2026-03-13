@@ -138,3 +138,9 @@ models:
           - not_null
     config:
       group: staging_models
+
+  - name: stg_tpcds_core__current_year_dates
+    description: ephemeral CTE filtering date_dim to current-year rows only
+    config:
+      materialized: ephemeral
+      group: staging_models
