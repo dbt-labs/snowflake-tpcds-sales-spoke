@@ -43,7 +43,7 @@ models:
     description: item-level sales aggregation as a Snowflake dynamic table
     config:
       materialized: dynamic_table
-      snowflake_warehouse: COMPUTE_WH
+      snowflake_warehouse: transforming
       target_lag: downstream
 
   - name: secure_customer_sales
