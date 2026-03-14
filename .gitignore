@@ -2,3 +2,5 @@
 target/
 dbt_packages/
 logs/
+__pycache__/
+dbt_internal_packages/

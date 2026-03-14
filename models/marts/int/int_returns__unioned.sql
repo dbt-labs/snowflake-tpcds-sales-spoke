@@ -22,7 +22,7 @@ final as (
             customer_sk, -- store
             returning_customer_sk -- catalog + web
         ) as customer_sk,
-        call_center_sk
+        call_center_sk,
         store_sk,
         return_amt,
         return_date_sk
