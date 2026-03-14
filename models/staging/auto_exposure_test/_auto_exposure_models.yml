@@ -1,0 +1,4 @@
+models:
+  - name: first_auto_exposure_model
+    config:
+      materialized: table
