@@ -25,13 +25,8 @@ PROJECT_NAME = "snowflake_tpcds_sales_spoke"
 # dbt core materialization types (all adapters)
 CORE_MATERIALIZATIONS = {"view", "table", "incremental", "ephemeral"}
 
-# materialized_view is a core type but NOT supported on Snowflake --
-# Snowflake uses dynamic_table instead.
-SNOWFLAKE_MATERIALIZATIONS = {"dynamic_table"}
-
 BUILTIN_MATERIALIZATIONS = (
     CORE_MATERIALIZATIONS
-    | SNOWFLAKE_MATERIALIZATIONS
     | {"materialized_view"}
     | {"seed", "snapshot", "test"}  # internal dbt materializations for non-model resource types
 )
@@ -117,12 +112,11 @@ def check_materialization_types(manifest: dict, project_name: str) -> CheckResul
                 found.add(mat)
 
     missing_core = CORE_MATERIALIZATIONS - found
-    missing_snowflake = SNOWFLAKE_MATERIALIZATIONS - found
 
     custom_found = found - BUILTIN_MATERIALIZATIONS
     enough_custom = len(custom_found) >= MIN_CUSTOM_MATERIALIZATIONS
 
-    missing = missing_core | missing_snowflake
+    missing = missing_core
     passed = not missing and enough_custom
 
     parts = []
@@ -136,7 +130,6 @@ def check_materialization_types(manifest: dict, project_name: str) -> CheckResul
     if passed:
         parts.append(
             f"Core: {sorted(CORE_MATERIALIZATIONS & found)}, "
-            f"Snowflake: {sorted(SNOWFLAKE_MATERIALIZATIONS & found)}, "
             f"Custom: {sorted(custom_found)}"
         )
 
