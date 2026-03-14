@@ -39,13 +39,6 @@ models:
       unique_key: sale_date_item_key
       incremental_strategy: merge
 
-  - name: agg_sales_by_item
-    description: item-level sales aggregation as a Snowflake dynamic table
-    config:
-      materialized: dynamic_table
-      snowflake_warehouse: transforming
-      target_lag: downstream
-
   - name: secure_customer_sales
     description: restricted sales view using Snowflake secure view materialization
     config:
