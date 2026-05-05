@@ -6,7 +6,7 @@ groups:
 
 models:
   - name: transactions
-    description: all the transactions you could dream of, enriched by customer and store data from the core dbt project
+    description: "all the transactions you could dream of, enriched by customer and store data from the core dbt project\nsdafasdf\nasdfasdfasdf\n\nsadf\nasdf"
     columns:
       - name: transaction_id
         tests:
@@ -18,6 +18,7 @@ models:
     description: changing this to public to verify dbt parse does not work
     config:
       access: public
+      materialized: view
   - name: duplicate_for_groups_transactions
     description: all the transactions you could dream of, enriched by customer and store data from the core dbt project
     columns:
@@ -25,3 +26,25 @@ models:
     config:
       group: paul_group_access_only
       access: private
+
+  - name: fct_daily_sales
+    description: incremental daily sales aggregation by date and item
+    columns:
+      - name: sale_date_item_key
+        tests:
+          - unique
+          - not_null
+    config:
+      materialized: incremental
+      unique_key: sale_date_item_key
+      incremental_strategy: merge
+
+  - name: secure_customer_sales
+    description: restricted sales view using Snowflake secure view materialization
+    config:
+      materialized: secure_view
+
+  - name: tmp_sales_snapshot
+    description: point-in-time sales data using Snowflake transient table materialization
+    config:
+      materialized: transient_table
